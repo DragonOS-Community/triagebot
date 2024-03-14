@@ -10,6 +10,7 @@ FROM ubuntu:22.04 as build
 # For CI/CD purposes, we can pass a pre-run command to the build image
 ARG PRE_RUN_CMD=""
 ARG CRATES_IO_INDEX="sparse+https://rsproxy.cn/index/"
+ARG APT_REPO="cn.archive.ubuntu.com"
 
 ENV RUSTUP_DIST_SERVER="https://rsproxy.cn"
 ENV RUSTUP_UPDATE_ROOT="https://rsproxy.cn/rustup"
