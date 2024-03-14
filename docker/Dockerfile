@@ -9,7 +9,12 @@ FROM ubuntu:22.04 as build
 
 # For CI/CD purposes, we can pass a pre-run command to the build image
 ARG PRE_RUN_CMD=""
+ARG CRATES_IO_INDEX="sparse+https://rsproxy.cn/index/"
 
+ENV RUSTUP_DIST_SERVER="https://rsproxy.cn"
+ENV RUSTUP_UPDATE_ROOT="https://rsproxy.cn/rustup"
+
+# 用于在CICD系统中执行自定义命令
 RUN $PRE_RUN_CMD
 
 RUN apt-get update -y && \
@@ -29,6 +34,9 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- \
     --default-toolchain stable --profile minimal -y
 
 COPY . .
+
+RUN cp ./docker/cargo.config $HOME/.cargo/config
+
 RUN bash -c 'source $HOME/.cargo/env && cargo test --release --all'
 RUN bash -c 'source $HOME/.cargo/env && cargo build --release'
 
