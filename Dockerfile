@@ -38,7 +38,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- \
 
 COPY . .
 
-RUN cp ./docker/cargo.conf $HOME/.cargo/config
+RUN cp ./docker/cargo.confg $HOME/.cargo/config
 
 RUN bash -c 'source $HOME/.cargo/env && cargo test --release --all'
 RUN bash -c 'source $HOME/.cargo/env && cargo build --release'
