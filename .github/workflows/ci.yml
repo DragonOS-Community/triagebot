@@ -28,16 +28,12 @@ jobs:
           fetch-depth: 1
 
       - name: Test and build
-        run: docker build -t triagebot .
+        shell: bash -ileo pipefail {0}
+        run: |
+            apt-get update -y
+            DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends g++ curl ca-certificates libc6-dev make libssl-dev pkg-config git cmake zlib1g-dev
+            curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --default-toolchain stable --profile minimal -y
 
-      # - name: Deploy to production
-      #   uses: rust-lang/simpleinfra/github-actions/upload-docker-image@master
-      #   with:
-      #     image: triagebot
-      #     repository: rust-triagebot
-      #     region: us-west-1
-      #     redeploy_ecs_cluster: rust-ecs-prod
-      #     redeploy_ecs_service: triagebot
-      #     aws_access_key_id: "${{ env.AWS_ACCESS_KEY_ID }}"
-      #     aws_secret_access_key: "${{ secrets.AWS_SECRET_ACCESS_KEY }}"
-      #   if: github.ref == 'refs/heads/master'
+            cargo test --release --all
+            cargo build --release
+
