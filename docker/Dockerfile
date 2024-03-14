@@ -18,6 +18,8 @@ ENV RUSTUP_UPDATE_ROOT="https://rsproxy.cn/rustup"
 # 用于在CICD系统中执行自定义命令
 RUN $PRE_RUN_CMD
 
+RUN sed -i 's/archive.ubuntu.com/${APT_REPO}/g' /etc/apt/sources.list
+
 RUN apt-get update -y && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
       g++ \
