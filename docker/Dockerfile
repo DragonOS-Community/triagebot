@@ -8,7 +8,7 @@
 FROM ubuntu:22.04 as build
 
 # For CI/CD purposes, we can pass a pre-run command to the build image
-ARG PRE_RUN_CMD=""
+ARG PRE_RUN_CMD="echo pre-run-cmd"
 ARG CRATES_IO_INDEX="sparse+https://rsproxy.cn/index/"
 ARG APT_REPO="cn.archive.ubuntu.com"
 
