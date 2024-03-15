@@ -1,4 +1,6 @@
 //! A scheduled job to post a PR to update the documentation on rust-lang/rust.
+// 暂时允许unreachable code, 因为我们目前不需要这个任务,只是为了方便注释它。
+#![allow(unreachable_code)]
 
 use crate::github::{self, GitTreeEntry, GithubClient, Issue, Repository};
 use crate::jobs::Job;
@@ -26,6 +28,7 @@ const SUBMODULES: &[&str] = &[
 
 const TITLE: &str = "Update books";
 
+/// 这个任务用于更新文档仓库的submodule，并在文档仓库创建PR
 pub struct DocsUpdateJob;
 
 #[async_trait]
@@ -39,6 +42,10 @@ impl Job for DocsUpdateJob {
         _ctx: &super::Context,
         _metadata: &serde_json::Value,
     ) -> anyhow::Result<()> {
+        // 我们目前暂时不需要这个，因此直接返回Ok
+
+        return Ok(());
+
         // Only run every other week. Doing it every week can be a bit noisy, and
         // (rarely) a PR can take longer than a week to merge (like if there are
         // CI issues). `Schedule` does not allow expressing this, so check it

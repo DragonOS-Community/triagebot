@@ -255,7 +255,7 @@ async fn run_server(addr: SocketAddr) -> anyhow::Result<()> {
         .expect("Failed to build octograb.");
     let ctx = Arc::new(Context {
         username: std::env::var("TRIAGEBOT_USERNAME").or_else(|err| match err {
-            std::env::VarError::NotPresent => Ok("rustbot".to_owned()),
+            std::env::VarError::NotPresent => Ok("dragonosbot".to_owned()),
             err => Err(err),
         })?,
         db: pool,

@@ -22,8 +22,8 @@ impl Job for PullRequestAssignmentUpdate {
 
         tracing::trace!("starting pull_request_assignment_update");
 
-        let rust_repo = gh.repository("rust-lang/rust").await?;
-        let prs = retrieve_pull_requests(&rust_repo, &gh).await?;
+        let dragonos_repo = gh.repository("DragonOS-Community/DragonOS").await?;
+        let prs = retrieve_pull_requests(&dragonos_repo, &gh).await?;
 
         // delete all PR assignments before populating
         init_table(&db).await?;

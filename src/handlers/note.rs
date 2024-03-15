@@ -3,7 +3,7 @@
 //! Users can make a new summary entry by commenting the following:
 //!
 //! ```md
-//! @rustbot note summary-title
+//! @dragonosbot note summary-title
 //! ```
 //!
 //! If this is the first summary entry, rustbot will amend the original post (the top-level comment) to add a "Notes" section. The section should **not** be edited by hand.

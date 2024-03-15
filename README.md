@@ -1,6 +1,8 @@
 # Triagebot
 
-This is the triage and team assistance bot for the rust-lang organization.
+这是为DragonOS Community提供分类和团队协助的机器人。
+
+它基于rust-lang的triagebot修改而来，感谢triagebot的作者们！
 
 Please see the [forge] for our documentation, and feel free to contribute edits
 if you find something helpful!
@@ -16,9 +18,8 @@ Triagebot can then respond to those notifications to perform various actions suc
 The Triagebot webserver also includes several other endpoints intended for users to access directly, such as https://triage.rust-lang.org/agenda.
 
 Triagebot uses a Postgres database to retain some state.
-In production, it uses [RDS](https://aws.amazon.com/rds/).
 
-The server at https://triage.rust-lang.org/ runs on ECS and is configured via [Terraform](https://github.com/rust-lang/simpleinfra/blob/master/terraform/shared/services/triagebot/main.tf#L8).
+triagebot服务的网址是 https://triagebot.dragonos.org.cn/ ， 它运行在由中国雅安大数据产业园赞助的服务器上。 
 Updates are automatically deployed when merged to master.
 
 ## Installation
@@ -48,7 +49,7 @@ The general overview of what you will need to do:
 
 5. Run `cargo run --bin triagebot`. This starts the http server listening for webhooks on port 8000.
 6. Add a `triagebot.toml` file to the main branch of your GitHub repo with whichever services you want to try out.
-7. Try interacting with your repo, such as issuing `@rustbot` commands or interacting with PRs and issues (depending on which services you enabled in `triagebot.toml`). Watch the logs from the server to see what's going on.
+7. Try interacting with your repo, such as issuing `@dragonosbot` commands or interacting with PRs and issues (depending on which services you enabled in `triagebot.toml`). Watch the logs from the server to see what's going on.
 
 ### Configure a database
 
