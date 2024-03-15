@@ -289,8 +289,8 @@ fn move_input_along_1() {
 
 #[test]
 fn multiname() {
-    let input = "@rustbot label to: +bug. Afterwards, delete the world. @triagebot prioritize";
-    let mut input = Input::new(input, vec!["triagebot", "rustbot"]);
+    let input = "@dragonosbot label to: +bug. Afterwards, delete the world. @triagebot prioritize";
+    let mut input = Input::new(input, vec!["triagebot", "dragonosbot"]);
     assert!(dbg!(input.next().unwrap()).is_ok());
     assert_eq!(
         &input.all[input.parsed..],

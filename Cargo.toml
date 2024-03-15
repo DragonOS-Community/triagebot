@@ -10,7 +10,7 @@ edition = "2021"
 serde_json = "1"
 openssl = "0.10"
 dotenv = "0.15"
-reqwest = { version = "0.11.4", features = ["json", "blocking"] }
+reqwest = { version = "0.11.4", features = ["json", "blocking", "socks"] }
 regex = "1"
 lazy_static = "1"
 anyhow = "1"

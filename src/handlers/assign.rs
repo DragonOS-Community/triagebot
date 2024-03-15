@@ -2,9 +2,9 @@
 //!
 //! This supports several ways for setting issue/PR assignment:
 //!
-//! * `@rustbot assign @gh-user`: Assigns to the given user.
-//! * `@rustbot claim`: Assigns to the comment author.
-//! * `@rustbot release-assignment`: Removes the commenter's assignment.
+//! * `@dragonosbot assign @gh-user`: Assigns to the given user.
+//! * `@dragonosbot claim`: Assigns to the comment author.
+//! * `@dragonosbot release-assignment`: Removes the commenter's assignment.
 //! * `r? @user`: Assigns to the given user (PRs only).
 //!
 //! This is capable of assigning to any user, even if they do not have write
