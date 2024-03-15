@@ -8,6 +8,7 @@ use crate::github::PullRequestDetails;
 use anyhow::Context;
 use handlers::HandlerError;
 use interactions::ErrorComment;
+use log::debug;
 use serde::Serialize;
 use std::fmt;
 use tracing as log;
@@ -174,6 +175,8 @@ pub async fn webhook(
     payload: String,
     ctx: &handlers::Context,
 ) -> Result<bool, WebhookError> {
+    debug!("{event} event payload: {:?}", payload);
+
     let event = match event {
         EventName::PullRequestReview => {
             let mut payload = deserialize_payload::<github::PullRequestReviewEvent>(&payload)
