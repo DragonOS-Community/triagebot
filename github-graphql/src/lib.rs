@@ -283,7 +283,7 @@ pub mod project_items {
     #[derive(cynic::QueryFragment, Debug)]
     #[cynic(variables = "Arguments")]
     pub struct Query {
-        #[arguments(login: "rust-lang")]
+        #[arguments(login: "DragonOS-Community")]
         pub organization: Option<Organization>,
     }
 

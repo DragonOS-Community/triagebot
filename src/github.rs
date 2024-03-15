@@ -1718,7 +1718,7 @@ impl<'q> IssuesQuery for Query<'q> {
         };
 
         let mut issues_decorator = Vec::new();
-        let re = regex::Regex::new("https://github.com/rust-lang/|/").unwrap();
+        let re = regex::Regex::new("https://github.com/DragonOS-Community/|/").unwrap();
         let re_zulip_link = regex::Regex::new(r"\[stream\]:\s").unwrap();
         for issue in issues {
             let fcp_details = if include_fcp_details {

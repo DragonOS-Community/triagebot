@@ -20,13 +20,13 @@ pub async fn handle(ctx: &Context, event: &Event) -> anyhow::Result<()> {
     }
 
     let repo = e.issue.repository();
-    if !(repo.organization == "rust-lang" && repo.repository == "rust") {
+    if !(repo.organization == "DragonOS-Community" && repo.repository == "DragonOS") {
         return Ok(());
     }
 
     if !e.issue.merged {
         log::trace!(
-            "Ignoring closing of rust-lang/rust#{}: not merged",
+            "Ignoring closing of DragonOS-Community/DragonOS#{}: not merged",
             e.issue.number
         );
         return Ok(());
@@ -36,7 +36,7 @@ pub async fn handle(ctx: &Context, event: &Event) -> anyhow::Result<()> {
         s
     } else {
         log::error!(
-            "rust-lang/rust#{}: no merge_commit_sha in event",
+            "DragonOS-Community/DragonOS#{}: no merge_commit_sha in event",
             e.issue.number
         );
         return Ok(());
@@ -80,7 +80,7 @@ async fn get_version_standalone(
     let resp = gh
         .raw()
         .get(&format!(
-            "https://raw.githubusercontent.com/rust-lang/rust/{}/src/version",
+            "https://raw.githubusercontent.com/DragonOS-Community/DragonOS/{}/src/version",
             merge_sha
         ))
         .send()
