@@ -39,13 +39,13 @@ mod tests {
 }
 
 const NEW_USER_WELCOME_MESSAGE: &str = "Thanks for the pull request, and welcome! \
-The Rust team is excited to review your changes, and you should hear from {who} \
+The DragonOS Community is excited to review your changes, and you should hear from {who} \
 some time within the next two weeks.";
 
 const CONTRIBUTION_MESSAGE: &str = "Please see [the contribution \
 instructions]({contributing_url}) for more information. Namely, in order to ensure the \
 minimum review times lag, PR authors and assigned reviewers should ensure that the review \
-label (`S-waiting-on-review` and `S-waiting-on-author`) stays updated, invoking these commands \
+label (`S-等待审查` and `S-等待作者修改`) stays updated, invoking these commands \
 when appropriate:
 
 - `@{bot} author`: the review is finished, PR author should check the comments and take action accordingly

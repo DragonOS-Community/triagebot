@@ -78,8 +78,8 @@ pub async fn pulls(
                 .collect::<Vec<_>>()
                 .join(", ")
         });
-        let wait_for_author = labels.contains("S-waiting-on-author");
-        let wait_for_review = labels.contains("S-waiting-on-review");
+        let wait_for_author = labels.contains("S-等待作者修改");
+        let wait_for_review = labels.contains("S-等待审查");
         let html_url = base_pull.html_url.unwrap();
         let number = base_pull.number;
         let title = base_pull.title.unwrap();

@@ -26,8 +26,8 @@ pub(super) async fn handle_command(
     }
 
     let issue_labels = issue.labels();
-    let waiting_on_review = "S-waiting-on-review";
-    let waiting_on_author = "S-waiting-on-author";
+    let waiting_on_review = "S-等待审查";
+    let waiting_on_author = "S-等待作者修改";
     let blocked = "S-blocked";
     let status_labels = [waiting_on_review, waiting_on_author, blocked];
 
