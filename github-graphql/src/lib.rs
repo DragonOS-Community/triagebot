@@ -36,7 +36,7 @@ pub mod queries {
             states: "OPEN",
             first: 100,
             after: $after,
-            labels: ["S-waiting-on-review"],
+            labels: ["S-等待审查"],
             orderBy: {direction: "ASC", field: "UPDATED_AT"}
         )]
         pub pull_requests: PullRequestConnection,

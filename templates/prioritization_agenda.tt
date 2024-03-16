@@ -132,7 +132,7 @@ don't know
 
 (TIP) Curate this list before the meeting
 
-[T-compiler](https://github.com/rust-lang/rust/pulls?q=is%3Apr+is%3Aopen+sort%3Aupdated-asc+label%3AS-waiting-on-review+draft%3Afalse+label%3AT-compiler)
+[T-compiler](https://github.com/rust-lang/rust/pulls?q=is%3Apr+is%3Aopen+sort%3Aupdated-asc+label%3AS-等待审查+draft%3Afalse+label%3AT-compiler)
 {{-issues::render(issues=top_unreviewed_prs, with_age=true, empty="No unreviewed PRs on `T-compiler` this time.")}}
 
 ## Next week's WG checkins
