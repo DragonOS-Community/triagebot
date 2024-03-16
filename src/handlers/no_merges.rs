@@ -53,7 +53,6 @@ pub(super) async fn parse_input(
     return Ok(None);
     // DragonOS社区目前允许merge commit, 所以这里不需要检查
 
-
     // Don't trigger if the PR has any of the excluded title segments.
     // if config
     //     .exclude_titles

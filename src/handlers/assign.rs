@@ -24,10 +24,10 @@ use crate::{
     interactions::EditIssueBody,
 };
 use anyhow::{bail, Context as _};
+use dragonos_team_data::v1::Teams;
 use parser::command::assign::AssignCommand;
 use parser::command::{Command, Input};
 use rand::seq::IteratorRandom;
-use dragonos_team_data::v1::Teams;
 use std::collections::{HashMap, HashSet};
 use std::fmt;
 use tracing as log;
@@ -38,9 +38,8 @@ mod tests {
     mod tests_from_diff;
 }
 
-const NEW_USER_WELCOME_MESSAGE: &str = "Thanks for the pull request, and welcome! \
-The DragonOS Community is excited to review your changes, and you should hear from {who} \
-some time within the next two weeks.";
+const NEW_USER_WELCOME_MESSAGE: &str = "感谢您的pull request，欢迎加入！🎉 \
+DragonOS社区很兴奋地期待审核您的更改，您将在接下来的两周内收到 {who} 的回复。💬😊";
 
 const CONTRIBUTION_MESSAGE: &str = "Please see [the contribution \
 instructions]({contributing_url}) for more information. Namely, in order to ensure the \
@@ -633,7 +632,7 @@ impl fmt::Display for FindReviewerError {
                     f,
                     "Team or group `{team}` not found.\n\
                     \n\
-                    rust-lang team names can be found at https://github.com/rust-lang/team/tree/master/teams.\n\
+                    DragonOS Community team names can be found at https://github.com/DragonOS-Community/teams_data/tree/master/teams.\n\
                     Reviewer group names can be found in `triagebot.toml` in this repo."
                 )
             }
@@ -760,13 +759,13 @@ fn candidate_reviewers_from_names<'a>(
         }
 
         // Check for a team name.
-        // Allow either a direct team name like `rustdoc` or a GitHub-style
-        // team name of `rust-lang/rustdoc` (though this does not check if
+        // Allow either a direct team name like `doc` or a GitHub-style
+        // team name of `DragonOS-Community/doc` (though this does not check if
         // that is a real GitHub team name).
         //
         // This ignores subteam relationships (it only uses direct members).
         let maybe_team = group_or_user
-            .strip_prefix("rust-lang/")
+            .strip_prefix("DragonOS-Community/")
             .unwrap_or(group_or_user);
         if let Some(team) = teams.teams.get(maybe_team) {
             candidates.extend(

@@ -176,9 +176,9 @@ fn groups_teams_users() {
     );
     let config = toml::toml!(
         [adhoc_groups]
-        group1 = ["user1", "rust-lang/team2"]
+        group1 = ["user1", "DragonOS-Community/team2"]
     );
-    let issue = generic_issue("octocat", "rust-lang/rust");
+    let issue = generic_issue("octocat", "DragonOS-Community/DragonOS");
     test_from_names(
         Some(teams),
         config,
@@ -236,7 +236,7 @@ fn what_do_slashes_mean() {
         Some(teams.clone()),
         config.clone(),
         issue.clone(),
-        &["rust-lang/compiler"],
+        &["DragonOS-Community/compiler"],
         Ok(&["t-user1"]),
     );
     test_from_names(
