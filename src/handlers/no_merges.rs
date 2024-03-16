@@ -11,7 +11,6 @@ use anyhow::Context as _;
 use serde::{Deserialize, Serialize};
 use std::collections::HashSet;
 use std::fmt::Write;
-use tracing as log;
 
 const NO_MERGES_KEY: &str = "no_merges";
 
@@ -30,7 +29,7 @@ struct NoMergesState {
 }
 
 pub(super) async fn parse_input(
-    ctx: &Context,
+    _ctx: &Context,
     event: &IssuesEvent,
     config: Option<&NoMergesConfig>,
 ) -> Result<Option<NoMergesInput>, String> {
@@ -42,7 +41,7 @@ pub(super) async fn parse_input(
     }
 
     // Require a `[no_merges]` configuration block to enable no-merges notifications.
-    let Some(config) = config else {
+    let Some(_config) = config else {
         return Ok(None);
     };
 
@@ -51,33 +50,37 @@ pub(super) async fn parse_input(
         return Ok(None);
     }
 
+    return Ok(None);
+    // DragonOS社区目前允许merge commit, 所以这里不需要检查
+
+
     // Don't trigger if the PR has any of the excluded title segments.
-    if config
-        .exclude_titles
-        .iter()
-        .any(|s| event.issue.title.contains(s))
-    {
-        return Ok(None);
-    }
+    // if config
+    //     .exclude_titles
+    //     .iter()
+    //     .any(|s| event.issue.title.contains(s))
+    // {
+    //     return Ok(None);
+    // }
 
-    let mut merge_commits = HashSet::new();
-    let commits = event
-        .issue
-        .commits(&ctx.github)
-        .await
-        .map_err(|e| {
-            log::error!("failed to fetch commits: {:?}", e);
-        })
-        .unwrap_or_default();
-    for commit in commits {
-        if commit.parents.len() > 1 {
-            merge_commits.insert(commit.sha.clone());
-        }
-    }
+    // let mut merge_commits = HashSet::new();
+    // let commits = event
+    //     .issue
+    //     .commits(&ctx.github)
+    //     .await
+    //     .map_err(|e| {
+    //         log::error!("failed to fetch commits: {:?}", e);
+    //     })
+    //     .unwrap_or_default();
+    // for commit in commits {
+    //     if commit.parents.len() > 1 {
+    //         merge_commits.insert(commit.sha.clone());
+    //     }
+    // }
 
-    // Run the handler even if we have no merge commits,
-    // so we can take an action if some were removed.
-    Ok(Some(NoMergesInput { merge_commits }))
+    // // Run the handler even if we have no merge commits,
+    // // so we can take an action if some were removed.
+    // Ok(Some(NoMergesInput { merge_commits }))
 }
 
 const DEFAULT_MESSAGE: &str = "
