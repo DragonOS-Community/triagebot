@@ -216,7 +216,7 @@ impl User {
 pub async fn get_team(
     client: &GithubClient,
     team: &str,
-) -> anyhow::Result<Option<rust_team_data::v1::Team>> {
+) -> anyhow::Result<Option<dragonos_team_data::v1::Team>> {
     let permission = crate::team_data::teams(client).await?;
     let mut map = permission.teams;
     Ok(map.swap_remove(team))

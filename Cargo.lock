@@ -524,6 +524,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "77c90badedccf4105eca100756a0b1289e191f6fcbdadd3cee1d2f614f97da8f"
 
 [[package]]
+name = "dragonos_team_data"
+version = "1.0.0"
+source = "git+https://github.com/DragonOS-Community/teams_data#a7685ad380ad89a662b91e97be36eb80201819a8"
+dependencies = [
+ "indexmap 2.1.0",
+ "serde",
+]
+
+[[package]]
 name = "either"
 version = "1.9.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1876,15 +1885,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "afab94fb28594581f62d981211a9a4d53cc8130bbcbbb89a0440d9b8e81a7746"
 
 [[package]]
-name = "rust_team_data"
-version = "1.0.0"
-source = "git+https://github.com/rust-lang/team#1ff0fa95e5ead9fbbb4be3975cac8ede35b9d3d5"
-dependencies = [
- "indexmap 2.1.0",
- "serde",
-]
-
-[[package]]
 name = "rustc-demangle"
 version = "0.1.21"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2664,6 +2664,7 @@ dependencies = [
  "cron",
  "cynic",
  "dotenv",
+ "dragonos_team_data",
  "futures",
  "github-graphql",
  "glob",
@@ -2683,7 +2684,6 @@ dependencies = [
  "regex",
  "reqwest",
  "route-recognizer",
- "rust_team_data",
  "serde",
  "serde_json",
  "serde_path_to_error",
