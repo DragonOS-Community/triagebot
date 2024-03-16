@@ -1,6 +1,6 @@
 use crate::github::GithubClient;
 use anyhow::Context as _;
-use rust_team_data::v1::{Teams, ZulipMapping, BASE_URL};
+use dragonos_team_data::v1::{Teams, ZulipMapping, BASE_URL};
 use serde::de::DeserializeOwned;
 
 async fn by_url<T: DeserializeOwned>(client: &GithubClient, path: &str) -> anyhow::Result<T> {

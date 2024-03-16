@@ -27,7 +27,7 @@ use anyhow::{bail, Context as _};
 use parser::command::assign::AssignCommand;
 use parser::command::{Command, Input};
 use rand::seq::IteratorRandom;
-use rust_team_data::v1::Teams;
+use dragonos_team_data::v1::Teams;
 use std::collections::{HashMap, HashSet};
 use std::fmt;
 use tracing as log;
