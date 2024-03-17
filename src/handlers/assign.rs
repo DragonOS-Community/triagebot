@@ -47,12 +47,12 @@ minimum review times lag, PR authors and assigned reviewers should ensure that t
 label (`S-等待审查` and `S-等待作者修改`) stays updated, invoking these commands \
 when appropriate:
 
-- `@{bot} author`: the review is finished, PR author should check the comments and take action accordingly
-- `@{bot} review`: the author is ready for a review, this PR will be queued again in the reviewer's queue";
+- `@{bot} author`: 审查结束后，PR的作者应检查评论并采取相应行动
+- `@{bot} review`: 作者已完成修改，将此PR提交给reviewer进行审阅，此PR将再次在审阅者队列中排队";
 
 const WELCOME_WITH_REVIEWER: &str = "@{assignee} (or someone else)";
 
-const WELCOME_WITHOUT_REVIEWER: &str = "@Mark-Simulacrum (NB. this repo may be misconfigured)";
+const WELCOME_WITHOUT_REVIEWER: &str = "@fslongjin @GnoCiYeH @Chiichen (NB. this repo may be misconfigured)";
 
 const RETURNING_USER_WELCOME_MESSAGE: &str = "r? @{assignee}
 
@@ -60,10 +60,10 @@ const RETURNING_USER_WELCOME_MESSAGE: &str = "r? @{assignee}
 They will have a look at your PR within the next two weeks and either review your PR or \
 reassign to another reviewer.
 
-Use r? to explicitly pick a reviewer";
+Use `r?` to explicitly pick a reviewer";
 
 const RETURNING_USER_WELCOME_MESSAGE_NO_REVIEWER: &str =
-    "@{author}: no appropriate reviewer found, use r? to override";
+    "@{author}: no appropriate reviewer found, use `r?` to override";
 
 const ON_VACATION_WARNING: &str = "{username} is on vacation. Please do not assign them to PRs.";
 
